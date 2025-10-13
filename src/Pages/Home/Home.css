@@ -1,0 +1,19 @@
+.desc-section {
+  min-width: 928px;
+  width: 80%;
+
+  margin: auto;
+  border: 1px solid black;
+
+  display: flex;
+  gap: 25px;
+
+  span {
+    display: grid;
+
+    & > * {
+      text-indent: 1rem;
+      align-self: center;
+    }
+  }
+}
