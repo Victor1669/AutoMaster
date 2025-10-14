@@ -45,8 +45,6 @@ export default function Agendar() {
       "agendamentos",
       JSON.stringify([...agendamentos, newManutencao])
     );
-
-    location.reload();
   }
 
   return (

@@ -2,10 +2,9 @@ import { useState } from "react";
 import { DarkScreen } from "../../Components/Form";
 import Table from "../../Components/Table";
 
-const agendamentos = JSON.parse(localStorage.getItem("agendamentos") || "[]");
-const clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
-
 export default function ListaManutencoes() {
+  const agendamentos = JSON.parse(localStorage.getItem("agendamentos") || "[]");
+  const clientes = JSON.parse(localStorage.getItem("clientes") || "[]");
   const [showDark, setShowDark] = useState(false);
 
   const [index, setIndex] = useState(null);
