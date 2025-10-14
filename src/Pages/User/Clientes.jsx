@@ -1,15 +1,15 @@
 import { useState } from "react";
+
 import { DarkScreen } from "../../Components/Form";
 import Table from "../../Components/Table";
 
-const clientes = JSON.parse(localStorage.getItem("clientes"));
-
 export default function ListaClientes() {
+  const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
   const [showRemove, setShowRemove] = useState(false);
 
   const [index, setIndex] = useState(null);
 
-  const cliente = clientes[index];
+  const cliente = clientes?.[index];
 
   function handleRemoveCliente() {
     const updatedArray = clientes.filter((_, i) => i !== index);

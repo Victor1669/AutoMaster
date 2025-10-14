@@ -39,7 +39,7 @@
   }
 }
 .list-container {
-  width: 900px;
+  width: 1100px;
   height: 90%;
   padding: 20px;
   background-color: rgb(133, 133, 133);
@@ -61,12 +61,17 @@
   tbody {
     background-color: lightblue;
   }
+
   tr {
-    height: 40px;
+    height: 41px;
 
     border: 1px solid black;
     padding: 5px;
   }
+}
+.btn-ordem {
+  margin-top: 5px;
+  cursor: pointer;
 }
 .add-button,
 .remove-button {
@@ -121,8 +126,63 @@
     text-align: center;
     padding: 0 40px;
   }
-  span {
+  & > span {
     display: flex;
     gap: 20px;
   }
+}
+textarea {
+  width: 200px;
+  max-width: 100%;
+}
+.ordem-servico-container {
+  width: 50vw;
+  height: fit-content;
+
+  padding: 50px;
+}
+.ordem-servico {
+  width: 100%;
+  height: inherit;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  section {
+    border: 1px solid black;
+
+    header {
+      background-color: rgb(95, 95, 95);
+      color: white;
+      font-weight: 700;
+
+      padding: 10px;
+    }
+    div {
+      display: grid;
+
+      &.cliente {
+        & > * {
+          border: 1px solid black;
+        }
+      }
+      &.desc {
+        padding: 10px;
+      }
+    }
+  }
+}
+.item {
+  padding: 5px;
+  gap: 2px;
+}
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.add-input {
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
 }

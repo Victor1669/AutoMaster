@@ -1,7 +1,10 @@
 import { useState } from "react";
+
 import { DarkScreen } from "../../Components/Form";
 import Table from "../../Components/Table";
+
 import useEstoque from "../../Hooks/useEstoque";
+import { useEffect } from "react";
 
 export default function Estoque() {
   const [showRemove, setShowRemove] = useState(false);
@@ -14,6 +17,12 @@ export default function Estoque() {
     index: { setIndex },
     quantidade: { quantidade, setQuantidade },
   } = useEstoque("estoque");
+
+  useEffect(() => {
+    if (!showAddItem) {
+      setQuantidade(0);
+    }
+  }, [showAddItem, setQuantidade]);
 
   return (
     <div className="list-container">
@@ -37,7 +46,7 @@ export default function Estoque() {
           );
           const BtnRemove = (
             <button
-              disabled={quantidade > 5 || quantidade < 1}
+              disabled={quantidade == 0}
               onClick={() => {
                 setIndex(i);
                 setShowRemove(true);
@@ -66,6 +75,7 @@ export default function Estoque() {
             Quantas unidades de <strong>{item?.nome}</strong> estão disponíveis?
             <input
               type="number"
+              className="add-input"
               value={quantidade}
               onChange={(e) => setQuantidade(e.target.value)}
             />

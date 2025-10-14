@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function useEstoque(localName) {
-  const estoque = JSON.parse(localStorage.getItem(localName));
+  const estoque = JSON.parse(localStorage.getItem(localName) || "[]");
 
   const [index, setIndex] = useState(null);
   const item = estoque[index];

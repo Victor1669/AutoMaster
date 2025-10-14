@@ -1,6 +1,5 @@
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import Form, { Field } from "../../Components/Form";
-import { useRef } from "react";
 
 const initialState = {
   nome: "",
@@ -40,9 +39,9 @@ export default function Reposicao() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const stored = localStorage.getItem("estoque");
+    const stored = localStorage.getItem("estoque") || "[]";
 
-    const estoque = stored ? JSON.parse(stored) : [];
+    const estoque = JSON.parse(stored);
     const newPeca = { nome, tipo, quantidade };
     const updatedEstoque = [...estoque, newPeca];
 

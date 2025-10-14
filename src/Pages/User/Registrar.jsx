@@ -1,6 +1,5 @@
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import Form, { Field } from "../../Components/Form";
-import { useRef } from "react";
 
 const initialState = {
   cliente: {

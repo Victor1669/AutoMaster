@@ -4,7 +4,8 @@ import Form, { Field } from "../../Components/Form";
 const initialState = {
   placa: "",
   mecanico: "",
-  data: "",
+  dataInicio: "",
+  dataConclusao: "",
   desc: "",
 };
 
@@ -16,8 +17,10 @@ function reducer(state, action) {
       return { ...state, placa: payload };
     case "mecanico":
       return { ...state, mecanico: payload };
-    case "data":
-      return { ...state, data: payload };
+    case "dataInicio":
+      return { ...state, dataInicio: payload };
+    case "dataConclusao":
+      return { ...state, dataConclusao: payload };
     case "descricao":
       return { ...state, desc: payload };
     default:
@@ -26,10 +29,8 @@ function reducer(state, action) {
 }
 
 export default function Agendar() {
-  const [{ placa, mecanico, data, desc }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ placa, mecanico, dataInicio, dataConclusao, desc }, dispatch] =
+    useReducer(reducer, initialState);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,21 +39,21 @@ export default function Agendar() {
 
     const agendamentos = stored ? JSON.parse(stored) : [];
 
-    const newManutencao = { placa, mecanico, data, desc };
+    const newManutencao = { placa, mecanico, dataInicio, dataConclusao, desc };
 
     localStorage.setItem(
       "agendamentos",
       JSON.stringify([...agendamentos, newManutencao])
     );
 
-    console.log();
+    location.reload();
   }
 
   return (
     <Form
       title="Agendar Manutenção"
       btnClassName="button"
-      className="form"
+      className="form agendar"
       btnText="Agendar"
       onSubmit={handleSubmit}
     >
@@ -68,19 +69,34 @@ export default function Agendar() {
         value={mecanico}
         dispatch={dispatch}
       />
-      <Field
-        label="Data da manutenção: "
-        type="data"
-        value={data}
-        dispatch={dispatch}
-        inputType="date"
-      />
-      <Field
-        label="Descrição do problema: "
-        type="descricao"
-        value={desc}
-        dispatch={dispatch}
-      />
+      <fieldset>
+        <legend>Manutenção</legend>
+        <Field
+          label="Início: "
+          type="dataInicio"
+          value={dataInicio}
+          dispatch={dispatch}
+          inputType="date"
+        />
+        <Field
+          label="Fim: "
+          type="dataConclusao"
+          value={dataConclusao}
+          dispatch={dispatch}
+          inputType="date"
+        />
+      </fieldset>
+      <label>
+        <span>Descrição do problema:</span>
+        <textarea
+          value={desc}
+          onChange={(e) =>
+            dispatch({ type: "descricao", payload: e.target.value })
+          }
+        >
+          teste
+        </textarea>
+      </label>
     </Form>
   );
 }

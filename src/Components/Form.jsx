@@ -40,20 +40,28 @@ export function Field({
   );
 }
 export function DarkScreen({
+  // STATE PARA MOSTRAR O CONTEÚDO
   showDark,
   setShowDark,
+  // FUNÇÕES DOS 2 BOTÕES
   onChangeItem,
   onSetItem,
+  // CONTEÚDO PRINCIPAL
   mensagem,
+  conteudo,
+  // TEXTO DOS BOTÕES
   cancelText,
   confirmText,
   setterText,
+  // CLASSE DA DIV PRINCIPAL
+  mainClassName = "",
 }) {
   if (showDark)
     return (
       <div className="dark-screen">
-        <div className="dark-content">
-          <p>{mensagem}</p>
+        <div className={`dark-content ${mainClassName}`}>
+          {conteudo && <>{conteudo}</>}
+          {mensagem && <p>{mensagem}</p>}
           <span>
             {cancelText && (
               <button className="button" onClick={() => setShowDark(false)}>
