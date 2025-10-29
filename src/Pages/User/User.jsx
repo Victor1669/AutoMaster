@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 import Header from "../../Components/Header";
@@ -7,9 +7,9 @@ import Main from "../../Components/Main";
 export default function User() {
   const navigate = useNavigate();
 
-  const [showMenu, setShowMenu] = useState(false);
+  const { nome } = useParams();
 
-  const { nome } = JSON.parse(localStorage.getItem("user"));
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="index">
@@ -35,8 +35,7 @@ export default function User() {
   );
 }
 export function UserHome() {
-  const { nome } = JSON.parse(localStorage.getItem("user"));
-
+  const { nome } = useParams();
   return <h2>Olá, {nome}</h2>;
 }
 

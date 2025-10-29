@@ -33,8 +33,6 @@ export default function Login() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    localStorage.setItem("user", JSON.stringify({ nome, email, senha }));
-
     navigate(`/user/${nome}`);
   }
 
@@ -70,8 +68,6 @@ export function SignIn() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    localStorage.setItem("user", JSON.stringify({ nome, email, senha }));
 
     navigate(`/user/${nome}`);
   }
